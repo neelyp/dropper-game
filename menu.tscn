@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://c80iummyupjvv"]
+
+[ext_resource type="Script" path="res://play.gd" id="1_u2f5r"]
+[ext_resource type="Script" path="res://toggle_name.gd" id="2_gk8kc"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 388.0
+offset_top = 283.0
+offset_right = 751.0
+offset_bottom = 388.0
+text = "Dropper Game"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 480.0
+offset_top = 313.0
+offset_right = 645.0
+offset_bottom = 354.0
+text = "Play"
+script = ExtResource("1_u2f5r")
+
+[node name="toggle_name" type="Button" parent="."]
+offset_left = 475.0
+offset_top = 440.0
+offset_right = 655.0
+offset_bottom = 475.0
+text = "Toggle Name"
+
+[node name="name" type="Label" parent="."]
+offset_left = 498.0
+offset_top = 395.0
+offset_right = 635.0
+offset_bottom = 418.0
+text = "Neel Pandruvada"
+script = ExtResource("2_gk8kc")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="toggle_name" to="name" method="_on_toggle_name_pressed"]

@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgrr28ah31yla"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_jp2pb"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_p0ljv"]
+[ext_resource type="Texture2D" uid="uid://cgwvmgehabqah" path="res://icon.svg" id="2_4reuc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56sw1"]
+size = Vector2(126, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8lai"]
+size = Vector2(63.6951, 36.3636)
+
+[sub_resource type="Gradient" id="Gradient_d05vp"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mkbek"]
+gradient = SubResource("Gradient_d05vp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l67b3"]
+size = Vector2(42, 579.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fx5o"]
+size = Vector2(1177, 20)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_jp2pb")
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(85, 139)
+script = ExtResource("1_p0ljv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(501, 317)
+shape = SubResource("RectangleShape2D_56sw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+position = Vector2(501, 318)
+texture = ExtResource("2_4reuc")
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(1, 474)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(573.5, 118)
+scale = Vector2(18.0391, 2.75)
+shape = SubResource("RectangleShape2D_c8lai")
+
+[node name="Sprite2D" type="Sprite2D" parent="floor"]
+position = Vector2(584.625, 124)
+scale = Vector2(18.3008, 1.8125)
+texture = SubResource("GradientTexture2D_mkbek")
+
+[node name="left wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left wall"]
+position = Vector2(-21, 251.438)
+shape = SubResource("RectangleShape2D_l67b3")
+
+[node name="score" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 4.0
+offset_right = 65.0
+offset_bottom = 27.0
+text = "Score: 0"
+
+[node name="right wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right wall"]
+position = Vector2(1176, 265)
+shape = SubResource("RectangleShape2D_l67b3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(569.5, -11)
+shape = SubResource("RectangleShape2D_6fx5o")
